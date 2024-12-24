@@ -1,0 +1,63 @@
+version '1.0-SNAPSHOT'
+repositories {
+    mavenCentral()
+}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.4.34")
+        classpath("net.serenity-bdd:serenity-single-page-report:2.4.34")
+        classpath("net.serenity-bdd:serenity-json-summary-report:2.4.34")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+apply plugin: 'application'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+sourceCompatibility = 1.8
+ext {
+    slf4jVersion = '1.7.7'
+    serenityCoreVersion = '4.1.20'
+    junitVersion = '4.13.2'
+    assertJVersion = '3.23.1'
+    logbackVersion = '1.2.10'
+    LombokVersion = '1.18.34'
+    Assured = '5.4.0'
+}
+
+dependencies {
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-core:${serenityCoreVersion}",
+            "org.projectlombok:lombok:${LombokVersion}",
+            "net.serenity-bdd:serenity-junit:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}",
+            "junit:junit:${junitVersion}",
+            "io.rest-assured:rest-assured:${Assured}"
+    implementation "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-screenplay-rest:${serenityCoreVersion}",
+            "net.serenity-bdd:serenity-ensure:${serenityCoreVersion}"
+
+    compileOnly "org.projectlombok:lombok:${LombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${LombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${LombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${LombokVersion}"
+    implementation 'net.serenity-bdd:serenity-gradle-plugin:2.4.34'
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.13'
+}
+test {
+    testLogging.showStandardStreams = true
+    maxParallelForks = 3
+    systemProperties System.getProperties()
+}
+serenity {
+    reports = ["single-page-html"]
+}
+gradle.startParameter.continueOnFailure = true
+test.finalizedBy(aggregate)
