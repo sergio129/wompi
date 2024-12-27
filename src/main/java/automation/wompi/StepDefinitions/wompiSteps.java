@@ -1,6 +1,7 @@
 package automation.wompi.StepDefinitions;
 
-import automation.wompi.Interaction.authInteraction;
+import automation.wompi.Interaction.AutenticacionInteraction;
+import automation.wompi.Interaction.PagoPseInteraction;
 import automation.wompi.Model.AuthModel;
 import automation.wompi.Utilities.DatosAuth;
 import io.cucumber.java.Before;
@@ -21,12 +22,13 @@ public class wompiSteps {
         actor.whoCan(CallAnApi.at(UrlBase));
     }
 
-    @Given("que John tiene claves de API válidas")
+    @Given("que wompi tiene claves de API válidas")
     public void queJohnTieneClavesDeAPIVálidas() {
         AuthModel model = DatosAuth.llaves();
-        actor.attemptsTo(authInteraction.datos(model));
+        actor.attemptsTo(AutenticacionInteraction.datos(model));
     }
-    @When("John hace una solicitud para autenticar")
+
+    @When("wompi hace una solicitud para autenticar")
     public void johnHaceUnaSolicitudParaAutenticar() {
         // Solicitud ya realizada en el paso @Dado
     }
@@ -35,6 +37,18 @@ public class wompiSteps {
     public void el_estado_de_la_respuesta_debería_ser(int statusCode) {
         actor.should(seeThatResponse("Código de respuesta esperado",
                 response -> response.statusCode(statusCode)));
+    }
+
+
+    @Given("que wompi intenta autenticar sin claves de API")
+    public void queWompiIntentaAutenticarSinClavesDeAPI() {
+        AuthModel model = DatosAuth.llaves();
+        actor.attemptsTo(AutenticacionInteraction.datos(model));
+    }
+
+    @When("wompi realiza un pago con metodo de pago valido")
+    public void wompiRealizaUnPagoConMetodoDePagoValido() {
+        actor.attemptsTo(PagoPseInteraction.datos());
     }
 
 

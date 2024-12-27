@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        glue = "automation.wompi.StepDefinitions.wompiSteps",
+        glue = "automation.wompi.StepDefinitions",
         features = "src/test/resources/features/",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@AutExitosa",
+        tags = "@PagoR",
         monochrome = true
 
 )
