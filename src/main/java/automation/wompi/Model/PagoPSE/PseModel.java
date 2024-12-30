@@ -9,7 +9,7 @@ import java.util.PrimitiveIterator;
 @Data
 public class PseModel {
     private String redirect_url;
-    private Integer amount_in_cents;
+    private int  amount_in_cents;
     private String reference;
     private String currency;
     private String signature;

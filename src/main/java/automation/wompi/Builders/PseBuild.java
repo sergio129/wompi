@@ -14,7 +14,7 @@ public class PseBuild {
         final PseModel model = null;
         return PseModel.builder()
                 .redirect_url(DatosPagoPSE.getDatosPagoPSE("pago.redirect_url"))
-                .amount_in_cents(model.getAmount_in_cents())
+                .amount_in_cents(Integer.parseInt((DatosPagoPSE.getDatosPagoPSE("pago.amount_in_cents"))))
                 .reference(DatosPagoPSE.getDatosPagoPSE("pago.reference"))
                 .currency(DatosPagoPSE.getDatosPagoPSE("pago.currency"))
                 .signature(DatosPagoPSE.getDatosPagoPSE("pago.signature"))
