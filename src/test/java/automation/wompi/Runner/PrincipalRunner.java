@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         glue = "automation.wompi.StepDefinitions",
         features = "src/test/resources/features/",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = "@PagoFirmaInvalida",
+        tags = "@PagoExitoso",
         monochrome = true
 
 )

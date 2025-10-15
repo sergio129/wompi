@@ -35,7 +35,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))  // Pasar la referencia
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -61,6 +61,18 @@ public class PseBuild {
                 .build();
     }
 
+    // Método que acepta la referencia como parámetro
+    public static PaymentMethodModel Payment_method(String reference) {
+        return PaymentMethodModel.builder()
+                .type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
+                .user_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.user_type"))
+                .user_legal_id_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.user_legal_id_type"))
+                .user_legal_id(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.user_legal_id"))
+                .financial_institution_code(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.financial_institution_code"))
+                .payment_description("Pago a Tienda Wompi ref: " + reference)
+                .build();
+    }
+
     // MÉTODOS PARA ESCENARIOS ALTERNOS
 
     public static PseModel sinFirma() {
@@ -80,7 +92,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -103,7 +115,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -127,7 +139,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -151,7 +163,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -175,7 +187,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -199,7 +211,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -247,7 +259,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(null) // Sin token de aceptación
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -265,7 +277,7 @@ public class PseBuild {
                 .user_legal_id_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.user_legal_id_type"))
                 .user_legal_id(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.user_legal_id"))
                 .financial_institution_code(null) // Sin código de banco
-                .payment_description(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.payment_description"))
+                .payment_description("Pago a Tienda Wompi ref: " + uniqueReference)
                 .build();
 
         return PseModel.builder()
@@ -298,7 +310,7 @@ public class PseBuild {
                 .user_legal_id_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.user_legal_id_type"))
                 .user_legal_id("ABC123XYZ") // Documento inválido
                 .financial_institution_code(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.financial_institution_code"))
-                .payment_description(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.payment_description"))
+                .payment_description("Pago a Tienda Wompi ref: " + uniqueReference)
                 .build();
 
         return PseModel.builder()
@@ -337,7 +349,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -360,7 +372,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(uniqueReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
@@ -384,7 +396,7 @@ public class PseBuild {
                 .session_id(DatosPagoPSE.getDatosPagoPSE("pago.session_id"))
                 .payment_method_type(DatosPagoPSE.getDatosPagoPSE("pago.payment_method.type"))
                 .customer_number_prefix(DatosPagoPSE.getDatosPagoPSE("pago.customer_number_prefix"))
-                .payment_method(Payment_method())
+                .payment_method(Payment_method(fixedReference))
                 .acceptance_token(AutenticacionInteraction.TokenAcceptance())
                 .accept_personal_auth(AutenticacionInteraction.TokenPersonal())
                 .build();
