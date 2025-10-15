@@ -19,4 +19,4 @@ Feature:Autenticación de API de Pagos
   Scenario: Pago
     Given que wompi tiene claves de API válidas
     When wompi realiza un pago con metodo de pago valido
-    Then el estado de la respuesta debería ser 200
+    Then el estado de la respuesta debería ser 201

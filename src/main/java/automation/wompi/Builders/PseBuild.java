@@ -5,6 +5,8 @@ import automation.wompi.Model.PagoPSE.CustomerdataModel;
 import automation.wompi.Model.PagoPSE.PaymentMethodModel;
 import automation.wompi.Model.PagoPSE.PseModel;
 import automation.wompi.Utilities.DatosPagoPSE;
+import automation.wompi.Utilities.SignatureGenerator;
+import automation.wompi.Utilities.ReferenceGenerator;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -12,12 +14,21 @@ public class PseBuild {
   private final PseModel model;
     public static PseModel Principal() {
         final PseModel model = null;
+
+        // Generar referencia única
+        String uniqueReference = ReferenceGenerator.generateUniqueReference();
+        int amountInCents = Integer.parseInt(DatosPagoPSE.getDatosPagoPSE("pago.amount_in_cents"));
+        String currency = DatosPagoPSE.getDatosPagoPSE("pago.currency");
+
+        // Generar la firma con la referencia única
+        String signature = SignatureGenerator.generateSignature(uniqueReference, amountInCents, currency);
+
         return PseModel.builder()
                 .redirect_url(DatosPagoPSE.getDatosPagoPSE("pago.redirect_url"))
-                .amount_in_cents(Integer.parseInt((DatosPagoPSE.getDatosPagoPSE("pago.amount_in_cents"))))
-                .reference(DatosPagoPSE.getDatosPagoPSE("pago.reference"))
-                .currency(DatosPagoPSE.getDatosPagoPSE("pago.currency"))
-                .signature(DatosPagoPSE.getDatosPagoPSE("pago.signature"))
+                .amount_in_cents(amountInCents)
+                .reference(uniqueReference)
+                .currency(currency)
+                .signature(signature)
                 .customer_data(Customer_data())
                 .customer_email(DatosPagoPSE.getDatosPagoPSE("pago.customer_email"))
                 .merchant_user_id(DatosPagoPSE.getDatosPagoPSE("pago.merchant_user_id"))
