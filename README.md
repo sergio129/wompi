@@ -342,41 +342,7 @@ Wompi/
 │ Documentación viva     │ Escenarios Gherkin          │
 │ ROI                    │ Positivo desde mes 1        │
 └────────────────────────┴─────────────────────────────┘
-```
 
----
-
-## 🚀 Próximos Pasos
-
-### Fase 1: Consolidación
-1. 🔄 Integración CI/CD (Jenkins/GitHub Actions)
-2. 📊 Dashboard de monitoreo en tiempo real
-
-### Fase 2: Expansión
-3. 🌐 Otros métodos de pago (Tarjetas, Nequi)
-4. 📈 Pruebas de carga con JMeter
-
-### Fase 3: Optimización
-5. 📱 Pruebas End-to-End completas
-6. 🔔 Monitoreo de producción
-
----
-
-## 📞 Preguntas Frecuentes
-
-**P: ¿Por qué Screenplay vs PageObject?**
-R: Screenplay es más expresivo para APIs, centrado en tareas de negocio, mejor reutilización.
-
-**P: ¿Seguridad de credenciales?**
-R: Archivos .properties excluidos de git, variables de entorno en CI/CD.
-
-**P: ¿Ejecución paralela?**
-R: Sí, referencias únicas permiten hasta 50 ejecuciones simultáneas.
-
-**P: ¿Mantenimiento ante cambios API?**
-R: Arquitectura en capas minimiza impacto, solo se actualizan Builders/Interactions.
-
----
 
 *Documento técnico completo - Automatización API Wompi PSE*  
 *Implementación: Octubre 2025*  
