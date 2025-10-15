@@ -20,7 +20,9 @@ apply plugin: 'application'
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-sourceCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
+
 ext {
     slf4jVersion = '1.7.7'
     serenityCoreVersion = '4.1.20'

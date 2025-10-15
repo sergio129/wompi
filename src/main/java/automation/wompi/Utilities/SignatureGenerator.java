@@ -55,18 +55,4 @@ public class SignatureGenerator {
         String integritySecret = DatosAuth.getDatosAuth("auth.integritySecret");
         return generateSignature(reference, amountInCents, currency, integritySecret);
     }
-
-    /**
-     * Genera la firma obteniendo automáticamente los datos de las propiedades
-     *
-     * @return Firma generada
-     */
-    public static String generateSignatureFromProperties() {
-        String reference = DatosPagoPSE.getDatosPagoPSE("pago.reference");
-        int amountInCents = Integer.parseInt(DatosPagoPSE.getDatosPagoPSE("pago.amount_in_cents"));
-        String currency = DatosPagoPSE.getDatosPagoPSE("pago.currency");
-        String integritySecret = DatosAuth.getDatosAuth("auth.integritySecret");
-
-        return generateSignature(reference, amountInCents, currency, integritySecret);
-    }
 }
